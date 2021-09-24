@@ -79,4 +79,4 @@ After that on the Inspector panel, make sure Current checkbox is ticked.
 
 This will show a blue rectangle around the player, which is where the view will be when we play the game. We can change the orientation of the camera with respect to the player, but as long as it is a child node of the player node, it will follow the player around in the level.
 
-Now we're done coding the enemy sprite. What we need to see next is the interactions between player and enemy. To move on to the interactions, click on this [link](interactions.md)
+Now we're done coding the enemy sprite. What we need to see next is the interactions between player and enemy. To move on to the interactions, click on this [link](Interactions.md)
