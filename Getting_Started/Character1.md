@@ -13,7 +13,7 @@ Now, we need to make a collsion box for the player. For that click the ```+``` i
 ![c2d](Images/c2d.png)<br>
 You'll need to give it a shape. For that, we click on the inspector, and in the shape drag down, we click on ```New Rectangle Shape 2D```.
 You'll now see a blue box appear in the screen. You can change the dimensions of this as per your preference.
-![blue](Images/blue.png)<br>
+![blue](Images/blue.png) <br>
 
 Now we can add our player sprite onto the screen. Select the player node on the left, then drag and drop the player.png file from our assets to the screen. It will automatically add it as a sprite. Now to see the blue box above our player, drag the player child element on the left panel above the CollisionShape2D element.
 We want to allign the character such that it fixes itself to the horizontal. So drag the character sprite so that it touches the horizontal axis. To be precise while doing it, Click on the magnet at the top of the screen to activate gridlock mechanism.
@@ -52,8 +52,9 @@ We'll add a Vector variable called velocity.
 This will store an X Value of 300 and a Y Value of 0 to the velocity variable. We can see this in action with another function ```move_and_slide()```. move and slide is a function built into KinematicBody2D node and it takes care of moving our actors.<br>
 Here, type the following:
 
-```move_and_slide(velocity)```
+```velocity = move_and_slide(velocity)```
 
+Move and slide will move our character with the given velocity and if it hits any object, it will return a value of velocity so that our character will stop there.
 Now if we go to our scene, we can see the character move to the right at a speed of 300. 
 <br>
 Now, the issue is, we want our velocity to be accessible outside the physics process function as well, so what we do is we take it above the function and make it accessible everywhere.
@@ -73,3 +74,64 @@ To make this value easily editable, we can export it and we will be able to see 
 
 ```export var gravity: = 1000.0```
 
+Now we can set a maximum speed for the sprite since it shouldn't accelerate to infintity. For that we define a new vector variable Speed.
+
+```export var speed: = Vector2(400.0, 500.0)```
+
+Now we can say, 
+<br>```if velocity.y > speed.y: 
+velocity.y = speed.y```
+
+With this it wont exceed the maximum.
+
+But now our character is just falling down. We need it to fall onto something. So for that we'll go to 2D view to make a stage.
+
+## Making a Simple Stage
+Click on the reset position to reset the player position to 0.
+
+Now to create our level, we need to create a new scene. Click on scene >>> New Scene >>> 2D Scene and name the new scene as Level0. Save it into a new folder called levels.
+
+Select the level template and click on the + button to add a ```TileMap```
+![tilemap](Images/tilemap.png)
+<br>
+
+Then click on TileSet >>> New Tile Set and click on the tile set to open up the tile set editor
+![newtile](Images/newtile.png)
+![editor](Images/editor.png)
+
+We need to load a texture which the editor will make it into a tile.
+For that, first drag and drop our level texture ```tileset.png``` from the assets and put it on the side of the editor. Now, click on ```New Single Tile``` Option and select the region to make our tile. To make it easier, we can again click the magnet button, but this time on the editor, to activate snap options. We can even change the snap options in the Inspector's <b> Snap options</b>.
+<br> Now after choosing a suitable size and selecting your tile, you can add a collision space to the tile so that our character will stop after hitting it.
+![collision](Images/collision.png)
+
+<br> Now by going back to the tile map you'll be able to draw out your level. Firstly, in the inspector, change the cell size to match the tile size that we took
+![cell](Images/cell.png)
+<br>
+Now you can click to make your world. After making your map, you can drag and drop your ```player.tscn``` file from the src>Actors folder to place the sprite into the world
+![world](Images/world.png)
+<b> NOTE: </b>Make the player a child class of the Level and not the title map
+You can press f6 to watch the animation.
+
+
+### Setting up layers
+
+There maybe some cases where we need the player to be able to move through walls the enemies cant. To make that, we make each class into a layer. To do that go to ```Project >>> Project Settings``` and name some layers...
+<br> Let's say we call it player, enemies and world.
+![physics](Images/physics.png)
+<br>
+Now when we click the tile map and open the collisions tab in the Inspector, we can see the layer and the masks. The Layer, tells us which layer this specific map belongs to (ie, world), you can change that by clicking. The mask tells which all objects it will interact with (ie, player and enemy)
+![layer](Images/layer.png)
+![mask](Images/mask.png)
+<br>
+You can do the same with the player as well. Make sure to change the original player script and not the one sourced into the level.
+
+
+## Coding actions
+First we need to set up input mappings. For that we need to go to ```Project >>> Project Settings>>> Input Map```.<br>
+Here we can add the keys for each mapping. We can see some default maps by godot. Add new maps for move_left, move_right and jump by typing it out in the action bar and pressing add. We can also set up keybinds for them by pressing the + key next to the newly added name.
+
+![left](Images/left.png)
+
+![key](Images/key.png)
+
+Now we can start coding our characters.
