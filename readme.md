@@ -5,6 +5,8 @@
 ![Godot Logo](Images/Godot_Logo.png)           
 ![Godot_Game](Images/Godot_Game.png)
 
+</br>
+
 # What is Godot Engine?
 Godot is a cross-platform, free and open-source game engine released under the MIT license. Similiar to other game engines like Unity and Unreal Engine, Godot helps to make Games from scratch and code them to perfection. Godot is a much better starting point for beginners due to the less amount of commitment towards it.
 
