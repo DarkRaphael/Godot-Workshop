@@ -140,5 +140,74 @@ Here we can add the keys for each mapping. We can see some default maps by godot
 
 ![key](Images/key.png)
 
-Now we can start coding our characters.
-In the player script
+Now we can start coding our characters. In the player script, make sure that it has the code ```extends Actor``` so that everything in actor is applicable over here.
+
+Add our ```_physics_process``` function into it.
+
+Now we need to take input from the user under the physics process function. For that we use the Input function
+
+``` Input.get_action_strength(<Add a movement>)```
+
+This will return a floating point value to give how much the key is pressed. Fully pressing the key will give 1.0 as value. This is useful for if you use joysticks, it can return decimal values depending on how much it is pressed.
+
+Now using this, we can define the direction of movement for our character. Right direction has to be positive and left direction has to be negative. For that we'll define a new Vector variable direction, which will take the values from the Inputs.
+
+```var direction: = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0.0)```
+
+<i>Note that we didnt add jump yet.</i>
+
+We'll encounter an issue where there will be a framerate gap between us pressing and the action being observed. This is because Godot runs the extend physics function first then the script physics function. This helps in giving a gravity to the object, but it does cause the framerate drop as the move and slide function is in the extends one. To make it right, we can put the move and slide function in the player physics rather than in the actor physics. But this will cause an error as we are setting the direction.y to zero right before the movement. To change that we can put 1.0 instead of 0.0 in the above code.
+
+<b> NOTE:</b> In vertical direction, downwards is positive and upwards is negative.
+
+Now to add jump into the mixture, we'll append the code such that the y axis direction changes appropriatey.
+
+```var direction: = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), -1.0 if Input.is_action_just_pressed("jump") else 0.0)```
+
+This will flip the direction if you pressed the jump key. But that will work any time. To make it only work when you're on the floor, we have a function in KinematicBody2D called ```is_on_floor()```
+This will allow jump to only be pressed when character is on the floor. 
+
+So, the new direction variable looks like:
+
+```var direction: = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), -1.0 if is_on_floor() and Input.is_action_just_pressed("jump") else 0.0)```
+
+You can put this as a function to make it neat.
+
+<b> NOTE: </b> For is_on_floor() to work, a floor normal has to be set. For that use the move_and slide function and add the floor normal parameter to it.
+
+``` velocity = move_and_slide(velocity,Vector2.UP)```
+
+Here, Vector2 will act as the upwards normal, showing where the floor is.<br>
+Otherwise, we can define the floor normal as a vector variable in the Actors script and use that variable instead. This makes it look cleaner.
+
+Now we still see jumping isnt calculated yet. That is because the velocity isnt calculated yet.
+For that we need a new function calculate_move_velocity()
+
+
+``` 
+func calculate_new_velocity(linear_velocity: Vector2, direction: Vector2, speed: Vector2) -> Vector2:
+var new_velcity = linear_velocity
+new_velocity.x = speed.x * direction.x
+new_velocity.y += gravity * get_physics_process_delta_time()
+if direction.y = -1.0
+    new_velocity.y = speed.y * direction.y
+return new_velocity
+```
+
+<b> Optional </b>
+
+We can add a variable to check whether the jump is interrupted in between. That way the player can choose till what height to jump.<br>
+For that, define a variable, in the physics process and send it as a parameter to calculate new velocity function.
+
+```var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0```
+
+This will give a positive value if the jump key is released when the character is moving up.
+
+After adding this as a parameter to the function using a bool value, we can add the following lines of code to add the jump interrupted facility.
+
+```
+if is_jump_interrupted:
+  new_velocity.y=0.0
+```
+  
+Now we're done with the player's scripts. Click the [link](enemy.md) to go to the enemy's script
