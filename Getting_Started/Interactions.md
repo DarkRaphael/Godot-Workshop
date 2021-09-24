@@ -82,3 +82,39 @@ func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
 	queue_free()
 ```
 
+
+
+
+
+## Let the Games Begin
+
+The game is nearly made. Make the camera a bit more perfect by adding limits to it on the Inspector Panel. We can limit the camera limits inside the player scene as well, as player is a child node of the level.
+
+![limits](Images/limits.png)
+
+The camera shouldn't move out of the world we created. 
+<br> We can smoothen the abruptness of the camera boundary hitting the world end by checking the smoothed checkbox.<br>
+If you observe closely, we can see that the camera doesnt move for a small area that the camera doesn't move when the character does. We can change that by enabling Drag Margin H and V checkboxes and changing the margin values to 0.
+
+![margin](Images/margin.png)
+
+Don't forget to smoothen the movement as well, by toggling the smoothing. You can change the smoothen speed by changing the speed category in the smoothen panel.
+
+
+<b>Add a background to the world.</b>	You can drag the background into the level node and make it its child node. It will automatically be added as a texture node.
+<br> You can select the node and select the layout menu that just appeared and click the ```full rect``` option.
+
+![layout](Images/layout.png)
+
+Pull the background node to the top of the child nodes so that it comes behind everything else. <br>
+Add a canvas layer node as a child node of the Level template.
+
+![canvas](Images/canvas.png)
+
+Add Background as a child layer of this new node and set its Layer parameter in the Inspector as a highly negative number. The layer attribute decides where it comes and the negative number makes it go all the way in the background.
+
+![attribute](Images/attiribute.png)
+
+Now your level is set to go. Have FUN!!!
+
+IT'S MARIO TIME!!!
