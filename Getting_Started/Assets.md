@@ -8,4 +8,4 @@ Now when you open the godot engine again, you should be able to see the starting
 <br>
 This is necessary to start the project as we need sprites for the characters, villains and the coins.
 
-To get started with creating the character click this [link](Character1.md)
+To get started with creating the character click this [link](Character.md)
