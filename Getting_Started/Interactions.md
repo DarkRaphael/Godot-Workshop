@@ -54,7 +54,7 @@ The second issue, we can ignore from the fact that the player will get an impuls
 Create an Area2D node as an enemy detector for the player in the same way as we did for the enemy. Ensure that the detector collision has no Layer and masks only the enemy. Name it "EnemyDetector" 
 In the image, the black part is the enemy detector
 
-![detector](detector.png)
+![detector](Images/detector.png)
 
 If this area detects an AREA, it will be the stomp detector and body jumps with the stomp impulse. If the area detects a BODY, it will be the enemy hitting and the player wil die.
 
