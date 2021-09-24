@@ -92,6 +92,7 @@ Click on the reset position to reset the player position to 0.
 Now to create our level, we need to create a new scene. Click on scene >>> New Scene >>> 2D Scene and name the new scene as Level0. Save it into a new folder called levels.
 
 Select the level template and click on the + button to add a ```TileMap```
+
 ![tilemap](Images/tilemap.png)
 <br>
 
