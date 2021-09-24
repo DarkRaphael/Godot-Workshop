@@ -118,3 +118,6 @@ Add Background as a child layer of this new node and set its Layer parameter in 
 Now your level is set to go. Have FUN!!!
 
 IT'S MARIO TIME!!!
+
+
+To know more about game mechanics go to this [link](Creating_Coins.md)
