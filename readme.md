@@ -23,7 +23,7 @@ To be starting with a new project we click on the ``` New Project ``` button and
 ![create](Getting_Started/Images/create.png)
 <br>
 This lands us on the 3D interface of Godot. For today, we shall be working with 2D interface, so switch to 2D
-![2D](Getting_Started/images/2D.png)
+![2D](Getting_Started/Images/2D.png)
 
 Now we're ready to get started.
 
