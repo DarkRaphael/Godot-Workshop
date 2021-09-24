@@ -40,7 +40,7 @@ By keyframing this, we can make a fade oout animation
 ![fade1](Images/fade1.png) ![fade2](Images/fade2.png)
 
 One thing to note is that the animation position of fade timeline ends up affecting the Bounce timeline. So add a keyframe in the beginning of the bounce timeline that makes it Completely Opaque.
-![opaque](Images/opaque.png)
+![opaque](Images/Opaque.png)
 
 ## Coding the animation
 
