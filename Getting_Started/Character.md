@@ -114,6 +114,7 @@ For that, first drag and drop our level texture ```tileset.png``` from the asset
 Now you can click to make your world. After making your map, you can drag and drop your ```player.tscn``` file from the src>Actors folder to place the sprite into the world
 
 ![world](Images/world.png)
+
 <b> NOTE: </b>Make the player a child class of the Level and not the title map
 You can press f6 to watch the animation.
 
