@@ -22,7 +22,7 @@ A new timeline will have appeared on the animation window. That is a track and i
 
 To animate the object, we need to move the sprite and keyframe it (click on the key icon where we want to fix the extreme positions).
 
-![anim1](Image/anim1.png) ![anim2](Image/anim2.png)
+![anim1](Images/anim1.png) ![anim2](Images/anim2.png)
 
 The above animation on being played will bounce the coin between these two places. There are more properties such as easing into extremes that can be experimented with.
 
@@ -37,10 +37,10 @@ In this one, instead of changing the position of the coin, we'll change the visi
 
 By keyframing this, we can make a fade oout animation
 
-![fade1](Image/fade1.png) ![fade2](Image/fade2.png)
+![fade1](Images/fade1.png) ![fade2](Images/fade2.png)
 
 One thing to note is that the animation position of fade timeline ends up affecting the Bounce timeline. So add a keyframe in the beginning of the bounce timeline that makes it Completely Opaque.
-![opaque](Images.opaque.png)
+![opaque](Images/opaque.png)
 
 ## Coding the animation
 
