@@ -96,18 +96,22 @@ Select the level template and click on the + button to add a ```TileMap```
 <br>
 
 Then click on TileSet >>> New Tile Set and click on the tile set to open up the tile set editor
+
 ![newtile](Images/newtile.png)
 ![editor](Images/editor.png)
 
 We need to load a texture which the editor will make it into a tile.
 For that, first drag and drop our level texture ```tileset.png``` from the assets and put it on the side of the editor. Now, click on ```New Single Tile``` Option and select the region to make our tile. To make it easier, we can again click the magnet button, but this time on the editor, to activate snap options. We can even change the snap options in the Inspector's <b> Snap options</b>.
 <br> Now after choosing a suitable size and selecting your tile, you can add a collision space to the tile so that our character will stop after hitting it.
+
 ![collision](Images/collision.png)
 
 <br> Now by going back to the tile map you'll be able to draw out your level. Firstly, in the inspector, change the cell size to match the tile size that we took
+
 ![cell](Images/cell.png)
 <br>
 Now you can click to make your world. After making your map, you can drag and drop your ```player.tscn``` file from the src>Actors folder to place the sprite into the world
+
 ![world](Images/world.png)
 <b> NOTE: </b>Make the player a child class of the Level and not the title map
 You can press f6 to watch the animation.
@@ -117,9 +121,11 @@ You can press f6 to watch the animation.
 
 There maybe some cases where we need the player to be able to move through walls the enemies cant. To make that, we make each class into a layer. To do that go to ```Project >>> Project Settings``` and name some layers...
 <br> Let's say we call it player, enemies and world.
+
 ![physics](Images/physics.png)
 <br>
 Now when we click the tile map and open the collisions tab in the Inspector, we can see the layer and the masks. The Layer, tells us which layer this specific map belongs to (ie, world), you can change that by clicking. The mask tells which all objects it will interact with (ie, player and enemy)
+
 ![layer](Images/layer.png)
 ![mask](Images/mask.png)
 <br>
@@ -135,3 +141,4 @@ Here we can add the keys for each mapping. We can see some default maps by godot
 ![key](Images/key.png)
 
 Now we can start coding our characters.
+In the player script
