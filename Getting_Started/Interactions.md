@@ -113,7 +113,7 @@ Add a canvas layer node as a child node of the Level template.
 
 Add Background as a child layer of this new node and set its Layer parameter in the Inspector as a highly negative number. The layer attribute decides where it comes and the negative number makes it go all the way in the background.
 
-![attribute](Images/attiribute.png)
+![attribute](Images/attribute.png)
 
 Now your level is set to go. Have FUN!!!
 
