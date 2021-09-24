@@ -33,7 +33,7 @@ A new timeline will appear, one that will ignore the first animation.
 
 In this one, instead of changing the position of the coin, we'll change the visibility of it. By changing the <b>A</b> value of the Modulate option, the coin's transperancy changes.
 
-![visi](Images/visi.png) ![A](Images/A.png)
+![visibility](Images/visibility.png) ![A](Images/A.png)
 
 By keyframing this, we can make a fade oout animation
 
@@ -41,3 +41,55 @@ By keyframing this, we can make a fade oout animation
 
 One thing to note is that the animation position of fade timeline ends up affecting the Bounce timeline. So add a keyframe in the beginning of the bounce timeline that makes it Completely Opaque.
 ![opaque](Images.opaque.png)
+
+## Coding the animation
+
+We can make Godot play the animation from the beginning as well as make the object free itself from queue at the end of the animation. We can use these on the bounce and fade animations respectively.<br>
+To make bounce start from the beginning, click on the autoplay button on the right of the animation name ![auto](Images/auto.png)<br>
+
+To make the queue_free() function call itself at the end of fade out, put the blue line at the end of the track and select the Call Method Track selection from the Add Track Menu
+
+![Call](Images/call.png)
+
+When the Call window opens, select the parent node (Area2D) and press enter. This will create a new track called functions. 
+<br> In functions track you can right click to insert a key 
+
+![insertfunc](Images/insertfunc.png)
+
+When the window opens, search for queue_free() function and open it.
+
+![queue](Images/queue.png)
+
+This makes the function call queue_free() at the end of animation.
+
+## Coding the coin
+
+Add a script to the coin and call it "Coin.gd"
+
+Add the following code to set a reference to the animation of the coin:
+
+```
+onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
+```
+
+This will automatically call get_node and update the value to anim_player when the function ```_ready``` would have given a true value.<br>
+
+Then from the Node, we can use the body_entered function. After connecting it, the following should be there:
+
+```
+func _on_body_entered(body: PhysicBody2D) -> void:
+    pass
+```
+
+Replace the pass with:
+
+```
+anim_player.play("fade")
+```
+
+Now your coin is ready to be put into the level.
+
+
+
+
+
