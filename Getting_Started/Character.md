@@ -210,4 +210,4 @@ if is_jump_interrupted:
   new_velocity.y=0.0
 ```
   
-Now we're done with the player's scripts. Click the [link](enemy.md) to go to the enemy's script
+Now we're done with the player's scripts. Click the [link](Enemy.md) to go to the enemy's script
